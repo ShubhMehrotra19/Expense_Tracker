@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp, Trash2 } from "lucide-react";
+import { Plus } from "lucide-react";
 
 type Transaction = {
   id: number;
@@ -183,13 +184,22 @@ function Expenses() {
     h1: "text-center text-white m-0 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight transition-all duration-500",
   };
 
+  function pressClose() {
+    setError(null);
+  }
+
   return (
     <div className="min-h-screen bg-slate-950 p-4 sm:p-6">
       <div className="max-w-5xl mx-auto">
         {/* Error Display */}
         {error && (
-          <div className="bg-red-900/50 border border-red-500 text-red-200 px-4 py-3 rounded-lg mb-4">
+          <div className="bg-red-900/50 border border-red-500 text-red-200 px-4 py-3 rounded-lg mb-4 flex justify-between items-center">
             {error}
+            <div
+              onClick={pressClose}
+              className="rotate-45 cursor-pointer hover:scale-[102%] active:scale-95">
+              <Plus />
+            </div>
           </div>
         )}
 
